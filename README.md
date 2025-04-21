@@ -1,4 +1,4 @@
-# Learn Textual
+# Textual TUI
 
 A collection of terminal-based UI applications built with the [Textual](https://github.com/Textualize/textual) framework for Python. This repository contains examples and projects to help you learn how to create rich, interactive terminal applications.
 

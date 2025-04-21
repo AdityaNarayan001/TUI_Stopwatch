@@ -13,7 +13,7 @@ A terminal-based stopwatch application with multiple instances. Features include
 - Dark/light mode toggle
 - Time display in hours, minutes, and seconds format
 
-![Stopwatch App Screenshot](https://via.placeholder.com/800x400?text=Stopwatch+App+Screenshot)
+![Stopwatch App Screenshot](asset/stopwatch.png)
 
 ## Sample Applications
 

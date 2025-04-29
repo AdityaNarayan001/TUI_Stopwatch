@@ -64,7 +64,9 @@ class Stopwatch(Static):
 
 class StopwatchApp(App):
     BINDINGS = [
-        ('D', 'toggle_dark_mode', 'Toggle dark mode')
+        ('d', 'toggle_dark_mode', 'Toggle dark mode'),
+        ('a', 'toggle_add_stopwatch', 'Add Stopwatch'),
+        ("r", "remove_stopwatch", "Remove Stopwatch")
     ]
 
     CSS_PATH = "stopwatch.css"
@@ -72,16 +74,34 @@ class StopwatchApp(App):
     def compose(self):
         yield Header(show_clock=True)
         yield Footer()
-        with VerticalScroll(id="stopwatches"):
-            yield Stopwatch()
-            yield Stopwatch()
-            yield Stopwatch()
+        yield VerticalScroll(
+            Stopwatch(), 
+            Stopwatch(), 
+            Stopwatch(), 
+            id="stopwatches"
+            )
+        # with VerticalScroll(id="stopwatches"):
+        #     yield Stopwatch()
+        #     yield Stopwatch()
+        #     yield Stopwatch()
 
     def action_toggle_dark_mode(self):
         if self.theme == 'textual-light':
             self.theme = 'textual-dark'
         else:
             self.theme = 'textual-light'
+
+    def action_toggle_add_stopwatch(self):
+        stopwatch = Stopwatch()
+        container = self.query_one("#stopwatches")
+        container.mount(stopwatch)
+        stopwatch.scroll_visible()
+
+    def action_remove_stopwatch(self):
+        stopwatches = self.query(Stopwatch)
+        if stopwatches:
+            stopwatches.last().remove()
+
 
 if __name__ == "__main__":
     StopwatchApp().run()

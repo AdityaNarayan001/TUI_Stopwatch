@@ -10,6 +10,8 @@ A terminal-based stopwatch application with multiple instances. Features include
 
 - Start, stop, and reset functionality
 - Multiple stopwatches running simultaneously
+- Ability to add new stopwatches dynamically
+- Ability to remove stopwatches
 - Dark/light mode toggle
 - Time display in hours, minutes, and seconds format
 
@@ -59,7 +61,9 @@ python samples/greetApp.py
 
 ## Key Bindings
 
-- **D**: Toggle between dark and light mode (in the Stopwatch app)
+- **D**: Toggle between dark and light mode
+- **A**: Add a new stopwatch
+- **R**: Remove the last stopwatch
 
 ## Learning Resources
 

@@ -6,6 +6,7 @@ from textual.reactive import reactive
 from textual import on
 
 class TimeDisplay(Static):
+    accumulated_time = 0
     start_time = monotonic()
     time_elapsed = reactive(0)
     def on_mount(self):
@@ -16,7 +17,9 @@ class TimeDisplay(Static):
         )
 
     def update_time_elapsed(self):
-        self.time_elapsed = monotonic() - self.start_time
+        self.time_elapsed = (
+            self.accumulated_time + (monotonic() - self.start_time)
+            )
 
     def watch_time_elapsed(self):
         time = self.time_elapsed
@@ -30,11 +33,12 @@ class TimeDisplay(Static):
         self.update_timer.resume()
 
     def stop(self):
-        self.time_elapsed = monotonic() - self.start_time
+        self.accumulated_time = self.time_elapsed
         self.update_timer.pause()
 
     def reset(self):
-        ...
+        self.accumulated_time = 0
+        self.time_elapsed = 0
 
 class Stopwatch(Static):
 
